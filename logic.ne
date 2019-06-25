@@ -1,4 +1,3 @@
-
 @{% var ast = typeof window !== 'undefined' ? window.ast : require('./ast.js'); %}
 
 main -> _ EXP _ {% function(d) { return d[1]; } %}
@@ -7,13 +6,13 @@ main -> _ EXP _ {% function(d) { return d[1]; } %}
 
 NOT     -> "!" | "¬" | "not" | "NOT"
 
-AND     -> "&" | "&&" | "Λ" | "and" | "AND"
+AND     -> "*" | "&" | "&&" | "Λ" | "and" | "AND"
 
-OR      -> "+" | "||" | "∨" | "or"  | "OR"
+OR      -> "+" | "||" | "∨" | "or" | "OR"
 
-XOR     -> "⊕" | "</>" | "xor" | "XOR"
+XOR     -> "⊕" | "⊻" | "<>" | "</>" | "xor" | "XOR"
 
-IMPLY   -> "->" | "=>" | "if" | "IF"
+IMPLY   -> "→" | "⇒" | "->" | "=>" | "if" | "IF"
 
 IFF     -> "<->" | "<=>" | "iff" | "IFF"
 
@@ -26,7 +25,7 @@ EXP -> "(" _ EXP _ ")"        {% function(d) { return d[2]; } %}
   | NOT_X
   | ATOM 
 
-NOT_X -> NOT _ EXP            {% function(d) { return ast.Not(d[0], d[2]); } %}
+NOT_X -> NOT _ EXP              {% function(d) { return ast.Not(d[0], d[2]); } %}
 
 X_AND_Y -> EXP _ AND _ EXP      {% function(d) { return ast.And(d[2], d[0], d[4]); } %}
 
@@ -40,12 +39,13 @@ X_IFF_Y -> EXP _ IFF _ EXP      {% function(d) { return ast.Iff(d[2], d[0], d[4]
 
 ATOM -> TEXT                    {% function(d) { return ast.Atom(null, d[0]); } %}
 
-WORD -> [a-zA-Z]  {% id %}
-  | WORD [a-zA-Z] {% function(d) {return d[0] + d[1];} %}
+WORD -> [_a-zA-Z]  {% id %}
+  
+STRING -> "\"" .:+ "\"" {% function(d) {return d[1].join("");} %}
 
 TEXT -> WORD      {% id %}
-  | WORD _ WORD   {% function(d) {return d[0] + ' ' + d[2];} %} 
+  | STRING        {% id %}
+
 
 _ -> null     {% function(d) {return null; } %}
 	| _ [\s]    {% function(d) {return null; } %}
-

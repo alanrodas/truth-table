@@ -50,13 +50,13 @@ function print(ast, parent) {
 
 var ast = {};
 
-ast.Not = Node.bind(null, 'not');
-ast.And = Node.bind(null, 'and');
-ast.Or = Node.bind(null, 'or');
-ast.Xor = Node.bind(null, 'xor');
+ast.Not   = Node.bind(null, 'not');
+ast.And   = Node.bind(null, 'and');
+ast.Or    = Node.bind(null, 'or');
+ast.Xor   = Node.bind(null, 'xor');
 ast.Imply = Node.bind(null, 'imply');
-ast.Iff = Node.bind(null, 'iff');
-ast.Atom = Node.bind(null, 'atom');
+ast.Iff   = Node.bind(null, 'iff');
+ast.Atom  = Node.bind(null, 'atom');
 
 ast.evaluate = evaluate;
 ast.print = print;
@@ -66,4 +66,3 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 } else {
    window.ast = ast;
 }
-

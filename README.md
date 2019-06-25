@@ -1,8 +1,8 @@
-# Truth Table
+# Tablas de Verdad
 
-This is a tool to visualize your propositions as truth tables.
+Una herramienta para visualizar y solucionar tablas de verdad.
 
-[Open Truth Table](http://andrejewski.github.io/truth-table/).
+[Open Truth Table](http://truth-table.alanrodas.com/).
 
 ### Backstory
 

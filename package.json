@@ -1,14 +1,15 @@
 {
   "name": "truth-table",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "propositional logic parser and truth table visualizations",
   "main": "script.js",
   "scripts": {
-    "build": "nearleyc logic.ne > logic-grammer.js"
+    "build": "nearleyc logic.ne > logic-grammer.js",
+    "start": "serve"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrejewski/truth-table.git"
+    "url": "git+https://github.com/alanrodas/truth-table.git"
   },
   "keywords": [
     "proposition",
@@ -24,7 +25,8 @@
     "url": "https://github.com/andrejewski/truth-table/issues"
   },
   "homepage": "https://github.com/andrejewski/truth-table#readme",
-  "dependencies": {
-    "nearley": "^2.1.1"
+  "devDependencies": {
+    "nearley": "2.1.1",
+    "serve": "^11.0.2"
   }
 }
